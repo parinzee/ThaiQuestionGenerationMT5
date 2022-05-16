@@ -15,14 +15,15 @@ for obj in objects:
         context = p["context"]
         qas = [p for p in p["qas"] if not p["is_impossible"]]
 
-        source_text = f"generate {len(qas)} questions: {context}"
-        target_text = ""
+        if len(qas) > 0:
+            source_text = f"generate {len(qas)} questions: {context}"
+            target_text = ""
 
-        for number, qa in enumerate(qas):
-            target_text += f"{number + 1}. {qa['question']}\nA: {qa['answers'][0]['text']}\n"
+            for number, qa in enumerate(qas):
+                target_text += f"{number + 1}. {qa['question']}\nA: {qa['answers'][0]['text']}\n"
 
-        source_list.append(source_text)
-        target_list.append(target_text)
+            source_list.append(source_text)
+            target_list.append(target_text)
 
 dataframe = pd.DataFrame(
     {"source_text": source_list, "target_text": target_list})
