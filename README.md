@@ -1,5 +1,4 @@
 # Datasets
 
-- SQuAD v2
-- LearningQ
+- SQuAD
 - RACE
