@@ -1,0 +1,1 @@
+<doc id="106558" url="https://th.wikipedia.org/wiki?curid=106558" title="Movable Type">Movable Type Movable Type เป็นระบบบล็อกที่ได้รับความนิยมสูงอีกตัวนึง พัฒนาโดยภาษาโปรแกรม Perl CGI โดยบริษัท Six Apart และใช้งานในลักษณะโอเพนซอร์ซ</doc>

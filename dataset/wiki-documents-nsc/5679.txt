@@ -1,0 +1,1 @@
+<doc id="5679" url="https://th.wikipedia.org/wiki?curid=5679" title="ออโตแคด">ออโตแคด ออโตแคด (AutoCAD) เป็นโปรแกรมช่วยออกแบบด้วยคอมพิวเตอร์ (CAD - Computer Aided Drafting/Design) พัฒนาโดยบริษัทออโตเดสก์ (Autodesk, Inc.) สหรัฐอเมริกา รุ่นล่าสุดของโปรแกรมในปัจจุบัน (พ.ศ. 2558) คือ AutoCAD 2018 ซึ่งทำงานบนระบบปฏิบัติการMicrosoft และ Mac</doc>

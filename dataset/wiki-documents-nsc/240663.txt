@@ -1,0 +1,1 @@
+<doc id="240663" url="https://th.wikipedia.org/wiki?curid=240663" title="Kinodynamic planning">Kinodynamic planning ในแขนงวิชาการวางแผนการเคลื่อนที่ ของหุ่นยนต์ คำว่า การวางแผนแบบคิโนไดนามิกส์ () เป็นรูปแบบของการวางแผนที่ค่าขอบ (bound) ของความเร็ว และความเร่ง จะต้องสอดคล้องกับเงื่อนไขที่กำหนดด้วย คำนี้ถูกใช้ครั้งแรกโดย B. R. Donald, P. G. Xavier, J. Canny, และ J. Reif.</doc>

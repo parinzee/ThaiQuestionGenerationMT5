@@ -1,0 +1,1 @@
+<doc id="28123" url="https://th.wikipedia.org/wiki?curid=28123" title="DOS (แก้ความกำกวม)">DOS (แก้ความกำกวม) DOS อาจหมายถึง- ดอส (MS-DOS) - ระบบปฏิบัติการของคอมพิวเตอร์ - การโจมตีโดยปฏิเสธการให้บริการ (Denial-of-service attack: DoS) - การโจมตีระบบเครือข่ายคอมพิวเตอร์ - United States Department of State (DoS)</doc>

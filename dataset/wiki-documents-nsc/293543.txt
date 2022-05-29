@@ -1,0 +1,1 @@
+<doc id="293543" url="https://th.wikipedia.org/wiki?curid=293543" title="ISO 15693">ISO 15693 ISO 15693 เป็นมาตรฐานที่บังคับใช้กับเทคโนโลยี RFID ที่มีความถี่ 13.65 เมกะเฮิรตซ์ ซึ่งมุ่งเน้นในส่วนของอุปกรณ์ RFID ที่นำมาใช้ในงานด้าน Supply Chain และ Logistic</doc>

@@ -1,0 +1,1 @@
+<doc id="59599" url="https://th.wikipedia.org/wiki?curid=59599" title="ลินุกซ์ซิส">ลินุกซ์ซิส ลินุกซ์ซิส (Linux SIS : Linux Simple Internet Server) เป็นระบบปฏิบัติการที่มีต้นแบบมาจากลินุกซ์ (Fedora Core) ซึ่งถูกพัฒนาขึ้นโดย Nectec และทีม OpenTLE ซึ่งเป็นโครงการโอเพนซอร์ส ที่ทุกคนสามารถพัฒนาได้</doc>

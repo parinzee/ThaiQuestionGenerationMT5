@@ -1,0 +1,1 @@
+<doc id="219082" url="https://th.wikipedia.org/wiki?curid=219082" title="PictBridge">PictBridge PictBridge เป็นมาตรฐานอุตสาหกรรม ที่เริ่มในปี ค.ศ. 2003 โดย Camera & Imaging Product Association (CIPA) สำหรับการพิมพ์แบบโดยตรงจากกล้องดิจิทัลไปหาเครื่องพิมพ์โดยไม่จำเป็นต้องเชื่อมต่อกล้องดิจิทัลผ่านคอมพิวเตอร์</doc>

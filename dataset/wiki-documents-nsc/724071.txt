@@ -1,0 +1,1 @@
+<doc id="724071" url="https://th.wikipedia.org/wiki?curid=724071" title="TRS-DOS">TRS-DOS TRS-DOS (ย่อมาจาก Tandy Radio Shack - Disk Operating System) เป็นระบบปฏิบัติการไมโครคอมพิวเตอร์สำหรับสื่อสาร ระบบนี้รองรับแผ่นดิสถึงสี่แผ่น ระบบนี้จะทำงานได้ถ้ามีแผ่นดิส ปัจจุบันได้จดทะเบียนกับ Microsoft แล้ว</doc>

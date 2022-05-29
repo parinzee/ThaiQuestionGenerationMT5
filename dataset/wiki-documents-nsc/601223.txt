@@ -1,0 +1,1 @@
+<doc id="601223" url="https://th.wikipedia.org/wiki?curid=601223" title="XOOPS">XOOPS ซู้ปส์ (XoopS; eXtensible Object Oriented Portal System) เป็นโปรแกรมเปิดเผยรหัสประเภทระบบบริหารจัดการเนื้อหา ใช้สำหรับบริหารและจัดการข้อมูลเว็บไซต์แบบสำเร็จรูป โปรแกรมพัฒนามาจากภาษา PHP ร่วมกับฐานข้อมูล MySql</doc>

@@ -1,0 +1,1 @@
+<doc id="287930" url="https://th.wikipedia.org/wiki?curid=287930" title="เกรลส์">เกรลส์ เกรลส์ (Grails) คือ เฟรมเวิร์ก ที่ใช้ ภาษากรูวี ในการพัฒนาเว็บแอปพลิเคชันได้อย่างรวดเร็ว โดยใช้หลักการของ mvc model ซึ่งประกอบด้วย domain class และ controller และในส่วนของ views</doc>

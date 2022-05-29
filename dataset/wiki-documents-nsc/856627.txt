@@ -1,0 +1,1 @@
+<doc id="856627" url="https://th.wikipedia.org/wiki?curid=856627" title="Landé g-factor">Landé g-factorคำอธิบาย คำอธิบาย. ตัวแปรนี้ได้มาจากการคำนวณของ first-order perturbation ของระดับพลังงานของอะตอมที่อยู่ในสนามแม่เหล็กแบบอ่อน เราสามารถเขียนรูปแบบของตัวแปรได้เป็น</doc>

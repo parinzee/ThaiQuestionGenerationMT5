@@ -1,0 +1,1 @@
+<doc id="4918" url="https://th.wikipedia.org/wiki?curid=4918" title="ข้อความคาดการณ์ของโกลด์บาค">ข้อความคาดการณ์ของโกลด์บาค ในคณิตศาสตร์ ข้อความคาดการณ์ของโกลด์บาค (Goldbach's conjecture) เป็นหนึ่งในปัญหาที่ยังแก้ไม่ได้ที่เก่าแก่ที่สุดในทฤษฎีจำนวน และในคณิตศาสตร์ ซึ่งกล่าวว่า ตัวอย่างเช่น &nbsp;formula_3 &nbsp;formula_4 formula_5 formula_6 formula_7 formula_8 ฯลฯ</doc>
