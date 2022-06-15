@@ -378,11 +378,9 @@ class MT5Lightning(pl.LightningModule):
         )
 
 
-model = MT5ForConditionalGeneration.from_pretrained(
-    "google/mt5-small", return_dict=True
-)
-tokenizer = MT5TokenizerFast.from_pretrained("google/mt5-small")
-dataset = MT5DataModule(tokenizer, train_df, valid_df, test_df, batch_size=1)
+model = MT5ForConditionalGeneration.from_pretrained("google/mt5-base", return_dict=True)
+tokenizer = MT5TokenizerFast.from_pretrained("google/mt5-base")
+dataset = MT5DataModule(tokenizer, train_df, valid_df, test_df)
 
 MT5Model = MT5Lightning(model, tokenizer)
 
@@ -391,7 +389,7 @@ callbacks.append(EarlyStopping(monitor="val_loss", mode="min"))
 # callbacks.append(ORTCallback())
 
 wandb_logger = WandbLogger(
-    project="mT5-thai-multiple-e2e-qg", name="mT5-small-thai-multiple-e2e-qg-aug-se"
+    project="mT5-thai-multiple-e2e-qg", name="mT5-small-thai-multiple-e2e-qg-aug-sep"
 )
 
 trainer = pl.Trainer(
