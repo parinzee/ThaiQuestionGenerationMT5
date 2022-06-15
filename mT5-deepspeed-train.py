@@ -381,8 +381,10 @@ class MT5Lightning(pl.LightningModule):
         )
 
 
-model = MT5ForConditionalGeneration.from_pretrained("google/mt5-base", return_dict=True)
-tokenizer = MT5TokenizerFast.from_pretrained("google/mt5-base")
+model = MT5ForConditionalGeneration.from_pretrained(
+    "google/mt5-small", return_dict=True
+)
+tokenizer = MT5TokenizerFast.from_pretrained("google/mt5-small")
 dataset = MT5DataModule(tokenizer, train_df, valid_df, test_df)
 
 MT5Model = MT5Lightning(model, tokenizer)
