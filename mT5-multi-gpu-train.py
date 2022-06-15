@@ -191,8 +191,6 @@ class MT5Dataset(torch.utils.data.Dataset):
     def __init__(self, df, tokenizer):
         self.data = df.reset_index()
         self.tokenizer = tokenizer
-        self.source_max_len = 1024
-        self.target_max_len = 1024
 
     def __len__(self):
         return len(self.data)
@@ -203,9 +201,7 @@ class MT5Dataset(torch.utils.data.Dataset):
 
         source_encoding = self.tokenizer(
             source,
-            padding="max_length",
-            max_length=self.source_max_len,
-            truncation=True,
+            padding=True,
             add_special_tokens=True,
             return_attention_mask=True,
             return_tensors="pt",
@@ -213,9 +209,7 @@ class MT5Dataset(torch.utils.data.Dataset):
 
         target_encoding = self.tokenizer(
             target,
-            padding="max_length",
-            max_length=self.target_max_len,
-            truncation=True,
+            padding=True,
             add_special_tokens=True,
             return_attention_mask=True,
             return_tensors="pt",
@@ -240,7 +234,7 @@ class MT5DataModule(pl.LightningDataModule):
         train_df,
         valid_df,
         test_df,
-        batch_size: int = 1,
+        batch_size: int = 10,
         num_workers: int = 2,
     ):
         super().__init__()
@@ -307,7 +301,14 @@ class MT5Lightning(pl.LightningModule):
             decoder_attention_mask=decoder_attention_mask,
         )
 
-        self.log("loss", output[0], prog_bar=True, on_step=True, on_epoch=True)
+        self.log(
+            "loss",
+            output[0],
+            prog_bar=True,
+            on_step=True,
+            on_epoch=True,
+            sync_dist=True,
+        )
 
         return output[0]
 
@@ -324,7 +325,14 @@ class MT5Lightning(pl.LightningModule):
             decoder_attention_mask=decoder_attention_mask,
         )
 
-        self.log("val_loss", output[0], prog_bar=True, on_step=True, on_epoch=True)
+        self.log(
+            "val_loss",
+            output[0],
+            prog_bar=True,
+            on_step=True,
+            on_epoch=True,
+            sync_dist=True,
+        )
 
         return output[0]
 
@@ -341,7 +349,7 @@ class MT5Lightning(pl.LightningModule):
             decoder_attention_mask=decoder_attention_mask,
         )
 
-        self.log("test_loss", output.loss, prog_bar=True)
+        self.log("test_loss", output.loss, prog_bar=True, sync_dist=True)
 
         return output.loss
 
@@ -388,11 +396,12 @@ wandb_logger = WandbLogger(
 
 trainer = pl.Trainer(
     accelerator="gpu",
-    devices=1,
+    devices=-1,
     logger=wandb_logger,
     max_epochs=20,
     log_every_n_steps=1,
     callbacks=callbacks,
-    strategy="deepspeed_stage_2",
+    strategy="dp",
 )
+
 trainer.fit(MT5Model, dataset)
