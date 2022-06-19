@@ -6,7 +6,7 @@ function Inference() {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="m-2 md:m-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="grid row-span-6 md:col-span-2 h-full">
             <ModelInput register={register} />
             <Settings register={register} />
         </form>

@@ -1,12 +1,14 @@
 function Info() {
     return (
-        <div className="shadow-xl shadow-blue-500/50 hover:shadow-indigo-500/50 window font-sans m-2 md:m-8 text-black dark:text-white row-span-1">
+        <div className="h-full shadow-xl shadow-blue-500/50 hover:shadow-indigo-500/50 window font-sans text-black dark:text-white md:row-span-6 col-span-1 md:col-span-3 md:overflow-auto">
             <h1 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Automatic Thai Question Generation with MT5</h1>
             <h2 className="text-lg md:text-xl text-gray-700 dark:text-gray-400 mt-1">Created by: Parinthapat Pengpun</h2>
             <p className="text-lg md:text-xl dark:text-white text-black mt-5">This is an <b>mT5-small</b> model that has been finetuned to <b>generate questions</b> utilizing <b>only the context.</b> More info: GitHub, Blog.</p>
             <hr className="mt-5" />
             <h2 className="text-2xl md:text-3xl text-black dark:text-white font-bold mt-1">Variants</h2>
             <ul className="text-lg md:text-xl mt-1 list-disc list-inside">
+                <li><span className="font-mono">Baseline:</span> This model was only trained with xquad</li>
+                <li><span className="font-mono">Default:</span> This model was trained on xquad, thaiqa, and iapp-wiki. Other models except baseline builds on this one.</li>
                 <li><span className="font-mono">aug:</span> Models with the dataset augmented (modified for better functionality)</li>
                 <li><span className="font-mono">sep:</span> Generate questions with &quot;&lt;sep&gt;&quot; instead of &quot;1.&quot; for separation</li>
                 <li><span className="font-mono">numsep:</span> Generate questions with &quot;&lt;1&gt;&quot; instead of &quot;1.&quot; for separation</li>
