@@ -4,3 +4,4 @@ dataset
 .vscode
 .env
 .venv
+__pycache__
