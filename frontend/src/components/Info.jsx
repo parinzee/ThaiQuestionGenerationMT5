@@ -1,6 +1,6 @@
 function Info() {
     return (
-        <div className="h-full shadow-xl shadow-blue-500/50 hover:shadow-indigo-500/50 window font-sans text-black dark:text-white md:row-span-6 col-span-1 md:col-span-3 md:overflow-auto">
+        <div className="md:h-full shadow-xl shadow-blue-500/50 hover:shadow-indigo-500/50 window font-sans text-black dark:text-white md:row-span-6 col-span-1 md:col-span-3 md:overflow-auto">
             <h1 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Automatic Thai Question Generation with MT5</h1>
             <h2 className="text-lg md:text-xl text-gray-700 dark:text-gray-400 mt-1">Created by: Parinthapat Pengpun</h2>
             <p className="text-lg md:text-xl dark:text-white text-black mt-5">This is an <b>mT5-small</b> model that has been finetuned to <b>generate questions</b> utilizing <b>only the context.</b> More info: GitHub, Blog.</p>
