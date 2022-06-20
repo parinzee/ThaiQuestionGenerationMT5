@@ -2,18 +2,19 @@ from typing import Literal
 
 import torch
 import psutil
+import uvicorn
 
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI 
 from pydantic import BaseModel
 from transformers import MT5ForConditionalGeneration, MT5TokenizerFast
 
 
 print("Loading models...")
 models = {
-    # "default": {
-    #     "model": MT5ForConditionalGeneration.from_pretrained("parinzee/mT5-small-thai-multiple-e2e-qg"),
-    #     "tokenizer": MT5TokenizerFast.from_pretrained(f"parinzee/mT5-small-thai-multiple-e2e-qg")
-    # },
+    "default": {
+        "model": MT5ForConditionalGeneration.from_pretrained("parinzee/mT5-small-thai-multiple-e2e-qg"),
+        "tokenizer": MT5TokenizerFast.from_pretrained(f"parinzee/mT5-small-thai-multiple-e2e-qg")
+    },
     # "separated": {
     #     "model": MT5ForConditionalGeneration.from_pretrained("parinzee/mT5-small-thai-multiple-e2e-qg-sep"),
     #     "tokenizer": MT5TokenizerFast.from_pretrained(f"parinzee/mT5-small-thai-multiple-e2e-qg-sep")
@@ -37,6 +38,7 @@ class Args(BaseModel):
     top_k: int = 20
     num_return_sequences: int = 1
 
+print("Starting up app...")
 app = FastAPI()
 
 @app.get("/")
@@ -71,3 +73,6 @@ def model_endpoint(args: Args):
         ]
 
     return preds
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=80)
