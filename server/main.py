@@ -1,24 +1,23 @@
-import logging
 from typing import Literal
 
 import torch
 import psutil
 
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket
 from pydantic import BaseModel
 from transformers import MT5ForConditionalGeneration, MT5TokenizerFast
 
 
-logging.info("Loading Models")
+print("Loading models...")
 models = {
-    "default": {
-        "model": MT5ForConditionalGeneration.from_pretrained("parinzee/mT5-small-thai-multiple-e2e-qg"),
-        "tokenizer": MT5TokenizerFast.from_pretrained(f"parinzee/mT5-small-thai-multiple-e2e-qg")
-    },
-    "separated": {
-        "model": MT5ForConditionalGeneration.from_pretrained("parinzee/mT5-small-thai-multiple-e2e-qg-sep"),
-        "tokenizer": MT5TokenizerFast.from_pretrained(f"parinzee/mT5-small-thai-multiple-e2e-qg-sep")
-    },
+    # "default": {
+    #     "model": MT5ForConditionalGeneration.from_pretrained("parinzee/mT5-small-thai-multiple-e2e-qg"),
+    #     "tokenizer": MT5TokenizerFast.from_pretrained(f"parinzee/mT5-small-thai-multiple-e2e-qg")
+    # },
+    # "separated": {
+    #     "model": MT5ForConditionalGeneration.from_pretrained("parinzee/mT5-small-thai-multiple-e2e-qg-sep"),
+    #     "tokenizer": MT5TokenizerFast.from_pretrained(f"parinzee/mT5-small-thai-multiple-e2e-qg-sep")
+    # },
     "number_separated": {
         "model": MT5ForConditionalGeneration.from_pretrained("parinzee/mT5-small-thai-multiple-e2e-qg-numsep"),
         "tokenizer": MT5TokenizerFast.from_pretrained(f"parinzee/mT5-small-thai-multiple-e2e-qg-numsep")
@@ -27,6 +26,7 @@ models = {
 
 
 class Args(BaseModel):
+    input_text: str
     model: Literal["default", "separated", "number_separated"] = "default"
     num_beams: int = 3
     max_length: int = 1024
@@ -37,7 +37,6 @@ class Args(BaseModel):
     top_k: int = 20
     num_return_sequences: int = 1
 
-logging.info("Starting App")
 app = FastAPI()
 
 @app.get("/")
@@ -45,12 +44,12 @@ def health_check():
     return {"models": list(models.keys()), "cpu_percent": psutil.cpu_percent(), "ram_percent": psutil.virtual_memory().percent} 
 
 @app.post("/")
-def model_endpoint(input_text: str, args: Args):
-    model = models[args.model][model]
-    tokenizer= models[args.model][tokenizer]
+def model_endpoint(args: Args):
+    model = models[args.model]["model"]
+    tokenizer= models[args.model]["tokenizer"]
 
     with torch.no_grad():
-        input_ids = tokenizer.encode(input_text, return_tensors="pt", add_special_tokens=True)
+        input_ids = tokenizer.encode(args.input_text, return_tensors="pt", add_special_tokens=True)
         generated_ids = model.generate(
             input_ids=input_ids,
             num_beams=args.num_beams,
