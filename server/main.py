@@ -75,7 +75,7 @@ def health_check():
 
 @app.post("/")
 @cache(expire=604800)
-def model_endpoint(args: Args):
+async def model_endpoint(args: Args):
     model = models[args.model]["model"]
     tokenizer = models[args.model]["tokenizer"]
 
