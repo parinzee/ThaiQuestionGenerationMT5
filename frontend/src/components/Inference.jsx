@@ -12,7 +12,7 @@ function Inference() {
   const onSubmit = (data) => {
     setLoading(true);
     axios
-      .post("http://ec2-54-169-5-52.ap-southeast-1.compute.amazonaws.com/", {
+      .post("https://ec2-54-169-5-52.ap-southeast-1.compute.amazonaws.com/", {
         input_text: data.input_text,
         model: data.model,
         num_beams: parseInt(data.num_beams),
