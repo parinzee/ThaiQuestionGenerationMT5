@@ -21,7 +21,7 @@ function Info() {
         Automatic Thai Question Generation with MT5
       </h1>
       <h2 className="text-lg md:text-xl text-gray-700 dark:text-gray-400 mt-1">
-        Created by: Parinthapat Pengpun
+        Created by: <a target="_blank" href="https://github.com/parinzee" className="decoration-amber-600">Parinthapat Pengpun</a>
       </h2>
       <p className="text-lg md:text-xl dark:text-white text-black mt-5">
         This is an <b>mT5-small</b> model that has been finetuned to{" "}

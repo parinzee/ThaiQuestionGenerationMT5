@@ -12,7 +12,7 @@ body {
 }
 
 a {
-  @apply text-sky-200 underline decoration-wavy
+  @apply text-sky-200 underline decoration-solid
 }
 
 
