@@ -3,9 +3,14 @@ from typing import Literal
 import torch
 import psutil
 import uvicorn
+import aioredis
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi_cache import FastAPICache
+from fastapi_cache.backends.redis import RedisBackend
+from fastapi_cache.decorator import cache
+
 from pydantic import BaseModel
 from transformers import MT5ForConditionalGeneration, MT5TokenizerFast
 
@@ -70,6 +75,7 @@ def health_check():
 
 
 @app.post("/")
+@cache(expire=604800)
 def model_endpoint(args: Args):
     model = models[args.model]["model"]
     tokenizer = models[args.model]["tokenizer"]
@@ -98,6 +104,11 @@ def model_endpoint(args: Args):
         ]
 
     return preds
+
+@app.on_event("startup")
+async def startup():
+    redis =  aioredis.from_url("redis://localhost", encoding="utf8", decode_responses=True)
+    FastAPICache.init(RedisBackend(redis), prefix="fastapi-cache")
 
 
 if __name__ == "__main__":

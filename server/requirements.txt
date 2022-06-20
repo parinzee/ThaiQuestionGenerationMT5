@@ -2,6 +2,7 @@ transformers
 fastapi
 uvicorn[standard]
 psutil
+fastapi-cache2[redis]
 
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch
