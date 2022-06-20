@@ -1,3 +1,7 @@
+{
+admin off
+}
+
 ec2-54-169-5-52.ap-southeast-1.compute.amazonaws.com
 
 reverse_proxy 127.0.0.1:5000
