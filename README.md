@@ -1,4 +1,9 @@
 # Automatic Thai Question Generation with MT5  🤗
+Folder structure:
+* `model`: Notebook + training script for the latest model
+* `frontend`: Vite app demo deployed to [github pages](https://parinzee.github.io/ThaiQuestionGenerationMT5/)
+* `backend`: fast-api app + caching + transformers + redis deployed onto AWS for inference
+
 Training details are in [this wandb project](https://wandb.ai/parinzee/mT5-thai-multiple-e2e-qg?workspace=user-parinzee)!
 
 ## Project Details (based on [patil-suraj's description](https://github.com/patil-suraj/question_generation/blob/master/README.md#project-details))
