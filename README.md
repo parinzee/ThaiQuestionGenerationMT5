@@ -33,7 +33,7 @@ These datasets are **question generation datasets** but are adapted for **questi
 ## More Details
 - **Data Augmentation, Cleaning, Collection:** [aug-numsep.ipynb](https://github.com/parinzee/ThaiQuestionGenerationMT5/blob/main/model/training-evaluation/aug-numsep.ipynb)
 - **Error Analysis + Exploratory Data Analysis:** [Analysis.ipynb](https://github.com/parinzee/ThaiQuestionGenerationMT5/blob/main/model/Analysis.ipynb)
-- **Other details**: [Medium Blog]()
+- **Other details**: [Medium Blog](https://medium.com/@parinzee/studying-let-an-ai-generate-q-as-to-quiz-you-9ef27b1554d)
 
 ## Model Variants (Datacentric)
 * `Baseline`: This was the original model conceived. Finetuned using "1." as the separation token, only with **xquad** dataset.
