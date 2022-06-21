@@ -1,6 +1,7 @@
 # Automatic Thai Question Generation with MT5  🤗
 Folder structure:
-* `model`: Notebook + training script for the latest model
+* `model`: Notebook + training scripts
+  * `Analysis.ipynb`: Error Analysis + Exploratory Data Analysis
 * `frontend`: Vite app demo deployed to [github pages](https://parinzee.github.io/ThaiQuestionGenerationMT5/)
 * `backend`: fast-api app + caching + transformers + redis deployed onto AWS for inference
 
@@ -29,11 +30,10 @@ The experiments with all **other models** contain the following datasets:
 
 These datasets are **question generation datasets** but are adapted for **question generation** manually.
 
-## Data Collection & Cleaning
-TBD
-
-## Data Augmentation
-TBD
+## More Details
+- **Data Augmentation, Cleaning, Collection:** [aug-numsep.ipynb](https://github.com/parinzee/ThaiQuestionGenerationMT5/blob/main/model/training-evaluation/aug-numsep.ipynb)
+- **Error Analysis:** [Analysis.ipynb](https://github.com/parinzee/ThaiQuestionGenerationMT5/blob/main/model/Analysis.ipynb)
+- **Other details**: [Medium Blog]()
 
 ## Model Variants (Datacentric)
 * `Baseline`: This was the original model conceived. Finetuned using "1." as the separation token, only with **xquad** dataset.
