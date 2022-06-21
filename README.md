@@ -14,10 +14,10 @@ input text: `สร้าง 2 คำถาม: เฟซบุ๊ก (อัง
 target text: `<1> เฟซบุ๊กคืออะไร A: บริการเครือข่ายสังคมสัญชาติอเมริกัน <2> เฟซบุ๊กก่อตั้งเมื่อไร A: วันที่ 4 กุมภาพันธ์ ค.ศ. 2004`
 
 ## Initial experiments
-The experiments with the **baseline variant** contain the following datasets:
+The experiments with the **baseline model** contain the following datasets:
 * [xquad](https://github.com/deepmind/xquad)
 
-The experiments with all **other variants** contain the following datasets:
+The experiments with all **other models** contain the following datasets:
 * [xquad](https://github.com/deepmind/xquad)
 * [thaiqa](https://huggingface.co/datasets/thaiqa_squad)
 * [iapp-thai-wiki](https://github.com/iapp-technology/iapp-wiki-qa-dataset)
@@ -30,13 +30,18 @@ TBD
 ## Data Augmentation
 TBD
 
-## Model Variants (Chronological Order)
+## Model Variants (Datacentric)
 * `Baseline`: This was the original model conceived. Finetuned using "1." as the separation token, only with **xquad** dataset.
-
 * `Default`: Identical to `Baseline` but was trained with more data: **xquad, thaiqa, iapp-thai-wiki**
-
-* `sep`: Conceived to solve the `Default`'s problem with questions involving decimal numbers. Identical to `Default` but **uses "\<sep>" instead of "1." for separation**.
-
-* `numsep`: Conceived to solve `sep`'s confusion on the number of questions to generate. Identical to `Default` but **uses "<1>" instead of "1." for separation**.
-
+* `sep`: Conceived to solve the `Default`'s *problem on incorrect generation with decimal numbers*. Identical to `Default` but **uses "\<sep>" instead of "1." for separation**.
+* `numsep`: Conceived to solve `sep`'s *lots of confusion* on the number of questions to generate. Identical to `Default` but **uses "<1>" instead of "1." for separation**.
 * `aug-numsep`: Conceived to solve `numsep`'s *slight confusion* on number of questions to generate. Identical to `numsep` but **the dataset has been augmented**.
+
+## Results:
+And these are our beautiful results
+
+| Variant  | Meteor | GLEU | BLEU-4 | CHRF | ROUGE-L |
+|----------|--------|------|--------|------|---------|
+| Baseline | 0.46   | 0.20 | 0.16   | 0.32 | 0.57    |
+| Default  | 0.56   | 0.34 | 0.31   | 0.46 | 0.86    |
+| sep      | 0.59   | 0.36 | 0.34   | 0.46 | 0.81    |
