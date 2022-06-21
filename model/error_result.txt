@@ -1,0 +1,5 @@
+Incomprehensible: 52
+No Answer: 21
+Wrong Amount QA: 12
+Wrong Answer: 19
+Repeating: 34
