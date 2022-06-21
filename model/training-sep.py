@@ -87,9 +87,10 @@ for obj in squad_json:
 
         for number, qa in enumerate(qas):
             target_text += (
-                f"{number + 1}. {qa['question']} A: {qa['answers'][0]['text']} "
+                f" {qa['question'].strip()} A: {qa['answers'][0]['text'].strip()}"
             )
-
+            if number + 1 != len(qas):
+              target_text += "<sep>"
 
         source_list.append(source_text.strip())
         target_list.append(target_text.strip())
@@ -101,17 +102,15 @@ for key in iapp_keys:
     try:
         obj = iapp_json["db"][key[0]]
         context = obj["detail"]
-        qas = obj["QA"]
+        qas = list(filter(lambda x: len(x["a"]) != 0 and len(x["q"]) != 0, obj["QA"]))
         target_text = ""
 
-        qa_amount = 0
-
         for number, qa in enumerate(qas):
-            if len(qa["a"]) != 0 and len(qa["q"]) != 0:
-                target_text += f"{number + 1}. {qa['q']} A: {qa['a'][0]} "
-                qa_amount += 1
+            target_text += f" {qa['q'].strip()} A: {qa['a'][0].strip()} "
+            if number + 1 != len(qas):
+              target_text += "<sep>"
 
-        source_text = f"สร้าง {qa_amount} คำถาม: {context}"
+        source_text = f"สร้าง {len(qas)} คำถาม: {context}"
         source_list.append(source_text.strip())
         target_list.append(target_text.strip())
 
@@ -134,10 +133,10 @@ for id in article_ids:
     # Remove double spaces resulting from removing parenthesis
     context = re.sub(r"\s\s+", " ", context)
 
-    qa_number = 1
-    for _, question in questions.iterrows():
-        target_text += f"{qa_number}. {question['question']} A: {question['answer']} "
-        qa_number += 1
+    for number, question in questions.iterrows():
+        target_text += f" {question['question'].strip()} A: {question['answer'].strip()}"
+        if number + 1 != len(qas):
+          target_text += "<sep>"
 
     source_list.append(source_text.strip())
     target_list.append(target_text.strip())
@@ -373,7 +372,7 @@ callbacks.append(EarlyStopping(monitor="val_loss", mode="min"))
 # callbacks.append(ORTCallback())
 
 wandb_logger = WandbLogger(
-    project="mT5-thai-multiple-e2e-qg", name="mT5-small-thai-multiple-e2e-qg-aug-sep"
+    project="mT5-thai-multiple-e2e-qg", name="mT5-small-thai-multiple-e2e-qg-sep"
 )
 
 trainer = pl.Trainer(

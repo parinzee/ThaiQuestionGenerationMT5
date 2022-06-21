@@ -2,8 +2,6 @@ import math
 import urllib.request
 import os
 import ijson
-import json
-import re
 from typing import Optional
 
 import torch
@@ -15,8 +13,6 @@ from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 from pytorch_lightning.loggers import WandbLogger
 
 
-from zipfile import ZipFile
-from bs4 import BeautifulSoup
 from transformers import (
     MT5ForConditionalGeneration,
     MT5TokenizerFast,
@@ -48,16 +44,6 @@ if not (
     download_dataset(
         "https://github.com/deepmind/xquad/raw/master/xquad.th.json", "xquad.json"
     )
-    download_dataset(
-        "https://raw.githubusercontent.com/iapp-technology/iapp-wiki-qa-dataset/main/iapp-thai-wikipedia-qa-1961-docs-9170-questions.json",
-        "iapp-thai-wikipedia-qa.json",
-    )
-    download_dataset(
-        "https://github.com/PyThaiNLP/thaiqa_squad/raw/main/data.zip", "thaiqa.zip"
-    )
-    with ZipFile("dataset/thaiqa.zip") as zipfile:
-        os.mkdir("dataset/thaiqa")
-        zipfile.extractall("dataset/thaiqa/")
 
 
 # This list will store all the Q&A
@@ -66,14 +52,8 @@ target_list = []
 
 # Start cleaning data
 squad = open(os.path.join("dataset/", "xquad.json"))
-iapp = open(os.path.join("dataset/", "iapp-thai-wikipedia-qa.json"))
-iapp_keys = open(os.path.join("dataset/", "iapp-thai-wikipedia-qa.json"))
-thaiqa = open(os.path.join("dataset/thaiqa/data/train.jsonl"))
 
 squad_json = ijson.items(squad, "data.item")
-iapp_json = json.load(iapp)
-iapp_keys = ijson.kvitems(iapp_keys, "db")
-thaiqa_df = pd.read_json(thaiqa, lines=True)
 
 # Get data from xquad
 for obj in squad_json:
@@ -93,54 +73,6 @@ for obj in squad_json:
 
         source_list.append(source_text.strip())
         target_list.append(target_text.strip())
-
-
-
-# Get dataset from iapp
-for key in iapp_keys:
-    try:
-        obj = iapp_json["db"][key[0]]
-        context = obj["detail"]
-        qas = obj["QA"]
-        target_text = ""
-
-        qa_amount = 0
-
-        for number, qa in enumerate(qas):
-            if len(qa["a"]) != 0 and len(qa["q"]) != 0:
-                target_text += f"{number + 1}. {qa['q']} A: {qa['a'][0]} "
-                qa_amount += 1
-
-        source_text = f"สร้าง {qa_amount} คำถาม: {context}"
-        source_list.append(source_text.strip())
-        target_list.append(target_text.strip())
-
-    except KeyError as e:
-        # Due to the dataset, there will always be a keyerror on "detail" which is the dataset's metadata
-        if str(e) != "'detail'":
-            print(f"KeyError: {e}")
-
-# Get data from thaiqa
-article_ids = set(thaiqa_df["article_id"])
-for id in article_ids:
-    questions = thaiqa_df[thaiqa_df["article_id"] == id]
-
-    # Remove html markup
-    soup = BeautifulSoup(questions["context"].iloc[0])
-
-    # Remove parenthesis because some are empty
-    context = re.sub(r"\(\)", "", soup.text)
-
-    # Remove double spaces resulting from removing parenthesis
-    context = re.sub(r"\s\s+", " ", context)
-
-    qa_number = 1
-    for _, question in questions.iterrows():
-        target_text += f"{qa_number}. {question['question']} A: {question['answer']} "
-        qa_number += 1
-
-    source_list.append(source_text.strip())
-    target_list.append(target_text.strip())
 
 dataframe = pd.DataFrame({"source_text": source_list, "target_text": target_list})
 
@@ -373,7 +305,7 @@ callbacks.append(EarlyStopping(monitor="val_loss", mode="min"))
 # callbacks.append(ORTCallback())
 
 wandb_logger = WandbLogger(
-    project="mT5-thai-multiple-e2e-qg", name="mT5-small-thai-multiple-e2e-qg-aug-sep"
+    project="mT5-thai-multiple-e2e-qg", name="mT5-thai-multiple-e2e-qg-baseline"
 )
 
 trainer = pl.Trainer(

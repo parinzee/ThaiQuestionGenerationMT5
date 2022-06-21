@@ -60,6 +60,51 @@ if not (
         zipfile.extractall("dataset/thaiqa/")
 
 
+def augment_data_xquad(source_list, target_list, context, qas):
+    for amt_questions in range(1, len(qas) + 1):
+        source_text = f"สร้าง {amt_questions} คำถาม: {context}"
+        target_text = ""
+
+        for index, qa in enumerate(qas[:amt_questions]):
+            target_text += (
+                f" {qa['question'].strip()} A: {qa['answers'][0]['text'].strip()}"
+            )
+            if index != len(qas[: amt_questions - 1]):
+                target_text += "<sep>"
+
+        source_list.append(source_text.strip())
+        target_list.append(target_text.strip())
+
+
+def augment_data_iapp(source_list, target_list, context, qas):
+    filtered_qas = list(filter(lambda x: len(x["a"]) != 0 and len(x["q"]) != 0, qas))
+    for amt_questions in range(1, len(filtered_qas) + 1):
+        source_text = f"สร้าง {amt_questions} คำถาม: {context}"
+        target_text = ""
+
+        for index, qa in enumerate(filtered_qas[:amt_questions]):
+            target_text += f" {qa['q'].strip()} A: {qa['a'][0].strip()}"
+            if index != len(filtered_qas[: amt_questions - 1]):
+                target_text += "<sep>"
+
+        source_list.append(source_text.strip())
+        target_list.append(target_text.strip())
+
+
+def augment_data_thaiqa(source_list, target_list, context, qas):
+    for amt_questions in range(1, len(qas) + 1):
+        source_text = f"สร้าง {amt_questions} คำถาม: {context}"
+        target_text = ""
+
+        for index, qa in enumerate(list(qas.iterrows())[:amt_questions]):
+            target_text += f" {qa[1]['question'].strip()} A: {qa[1]['answer'].strip()}"
+            if index != len(qas[: amt_questions - 1]):
+                target_text += "<sep>"
+
+        source_list.append(source_text.strip())
+        target_list.append(target_text.strip())
+
+
 # This list will store all the Q&A
 source_list = []
 target_list = []
@@ -82,19 +127,7 @@ for obj in squad_json:
         context = p["context"]
         qas = [p for p in p["qas"] if len(p) > 0]
 
-        source_text = f"สร้าง {len(qas)} คำถาม: {context}"
-        target_text = ""
-
-        for number, qa in enumerate(qas):
-            target_text += (
-                f"{number + 1}. {qa['question']} A: {qa['answers'][0]['text']} "
-            )
-
-
-        source_list.append(source_text.strip())
-        target_list.append(target_text.strip())
-
-
+        augment_data_xquad(source_list, target_list, context, qas)
 
 # Get dataset from iapp
 for key in iapp_keys:
@@ -104,16 +137,7 @@ for key in iapp_keys:
         qas = obj["QA"]
         target_text = ""
 
-        qa_amount = 0
-
-        for number, qa in enumerate(qas):
-            if len(qa["a"]) != 0 and len(qa["q"]) != 0:
-                target_text += f"{number + 1}. {qa['q']} A: {qa['a'][0]} "
-                qa_amount += 1
-
-        source_text = f"สร้าง {qa_amount} คำถาม: {context}"
-        source_list.append(source_text.strip())
-        target_list.append(target_text.strip())
+        augment_data_iapp(source_list, target_list, context, qas)
 
     except KeyError as e:
         # Due to the dataset, there will always be a keyerror on "detail" which is the dataset's metadata
@@ -134,13 +158,7 @@ for id in article_ids:
     # Remove double spaces resulting from removing parenthesis
     context = re.sub(r"\s\s+", " ", context)
 
-    qa_number = 1
-    for _, question in questions.iterrows():
-        target_text += f"{qa_number}. {question['question']} A: {question['answer']} "
-        qa_number += 1
-
-    source_list.append(source_text.strip())
-    target_list.append(target_text.strip())
+    augment_data_thaiqa(source_list, target_list, context, questions)
 
 dataframe = pd.DataFrame({"source_text": source_list, "target_text": target_list})
 
@@ -373,7 +391,7 @@ callbacks.append(EarlyStopping(monitor="val_loss", mode="min"))
 # callbacks.append(ORTCallback())
 
 wandb_logger = WandbLogger(
-    project="mT5-thai-multiple-e2e-qg", name="mT5-small-thai-multiple-e2e-qg-aug-sep"
+    project="mT5-thai-multiple-e2e-qg", name="mT5-small-thai-multiple-e2e-qg-aug-numsep"
 )
 
 trainer = pl.Trainer(
