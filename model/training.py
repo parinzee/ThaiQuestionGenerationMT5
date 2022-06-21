@@ -14,10 +14,6 @@ import pytorch_lightning as pl
 from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 from pytorch_lightning.loggers import WandbLogger
 
-from deepspeed.ops.adam import DeepSpeedCPUAdam
-from pytorch_lightning.strategies import DeepSpeedStrategy
-
-# from pl_bolts.callbacks import ORTCallback
 
 from zipfile import ZipFile
 from bs4 import BeautifulSoup
@@ -25,6 +21,7 @@ from transformers import (
     MT5ForConditionalGeneration,
     MT5TokenizerFast,
 )
+
 
 
 def download_dataset(url, file_name):
@@ -357,7 +354,7 @@ class MT5Lightning(pl.LightningModule):
         return output.loss
 
     def configure_optimizers(self):
-        return DeepSpeedCPUAdam(self.parameters(), lr=3e-4)
+        return torch.optim.AdamW(self.parameters(), lr=3e-4)
 
     def training_epoch_end(self, training_step_outputs):
         self.avg_training_loss = np.round(
@@ -404,11 +401,6 @@ trainer = pl.Trainer(
     max_epochs=20,
     log_every_n_steps=1,
     callbacks=callbacks,
-    strategy=DeepSpeedStrategy(
-        stage=3,
-        offload_optimizer=True,  # Enable CPU Offloading
-        logging_batch_size_per_gpu=1,
-    ),
 )
 
 trainer.fit(MT5Model, dataset)
