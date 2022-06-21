@@ -22,19 +22,23 @@ models = {
             "parinzee/mT5-small-thai-multiple-e2e-qg"
         ),
         "tokenizer": MT5TokenizerFast.from_pretrained(
-            f"parinzee/mT5-small-thai-multiple-e2e-qg"
+            "parinzee/mT5-small-thai-multiple-e2e-qg"
         ),
     },
-    # "separated": {
-    #     "model": MT5ForConditionalGeneration.from_pretrained("parinzee/mT5-small-thai-multiple-e2e-qg-sep"),
-    #     "tokenizer": MT5TokenizerFast.from_pretrained(f"parinzee/mT5-small-thai-multiple-e2e-qg-sep")
-    # },
+    "augmented_number_separated": {
+        "model": MT5ForConditionalGeneration.from_pretrained(
+            "parinzee/mT5-small-thai-multiple-e2e-qg-aug-numsep"
+        ),
+        "tokenizer": MT5TokenizerFast.from_pretrained(
+            "parinzee/mT5-small-thai-multiple-e2e-qg-aug-numsep"
+        ),
+    },
     "number_separated": {
         "model": MT5ForConditionalGeneration.from_pretrained(
             "parinzee/mT5-small-thai-multiple-e2e-qg-numsep"
         ),
         "tokenizer": MT5TokenizerFast.from_pretrained(
-            f"parinzee/mT5-small-thai-multiple-e2e-qg-numsep"
+            "parinzee/mT5-small-thai-multiple-e2e-qg-numsep"
         ),
     },
 }
@@ -42,7 +46,9 @@ models = {
 
 class Args(BaseModel):
     input_text: str
-    model: Literal["default", "separated", "number_separated"] = "default"
+    model: Literal[
+        "default", "augmented_number_separated", "number_separated"
+    ] = "default"
     num_beams: int = 3
     max_length: int = 1024
     repetition_penalty: float = 2.5
@@ -104,9 +110,12 @@ async def model_endpoint(args: Args):
 
     return preds
 
+
 @app.on_event("startup")
 async def startup():
-    redis =  aioredis.from_url("redis://localhost", encoding="utf8", decode_responses=True)
+    redis = aioredis.from_url(
+        "redis://localhost", encoding="utf8", decode_responses=True
+    )
     FastAPICache.init(RedisBackend(redis), prefix="fastapi-cache")
 
 

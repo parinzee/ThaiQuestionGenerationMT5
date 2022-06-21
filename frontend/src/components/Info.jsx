@@ -122,6 +122,14 @@ function Info() {
               <td>0.46</td>
               <td>0.81</td>
             </tr>
+            <tr>
+              <td>aug-numsep</td>
+              <td>0.60</td>
+              <td>0.37</td>
+              <td>0.36</td>
+              <td>0.47</td>
+              <td>0.84</td>
+            </tr>
           </tbody>
         </table>
       </div>
