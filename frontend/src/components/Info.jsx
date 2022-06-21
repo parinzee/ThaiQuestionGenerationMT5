@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 function Info() {
   return (
-    <motion.div className="transition-shadow md:h-full shadow-xl shadow-blue-500/50 hover:shadow-indigo-500/50 window font-sans text-black dark:text-white md:row-span-6 col-span-1 md:col-span-3 md:overflow-auto"
+    <motion.div
+      className="transition-shadow md:h-full shadow-xl shadow-blue-500/50 hover:shadow-indigo-500/50 window font-sans text-black dark:text-white md:row-span-6 col-span-1 md:col-span-3 md:overflow-auto"
       initial="pageInitial"
       animate="pageAnimate"
       variants={{
@@ -12,7 +13,7 @@ function Info() {
           opacity: 1,
           transition: {
             delay: 0.2,
-            duration: 0.5
+            duration: 0.5,
           },
         },
       }}
@@ -21,7 +22,14 @@ function Info() {
         Automatic Thai Question Generation with MT5
       </h1>
       <h2 className="text-lg md:text-xl text-gray-700 dark:text-gray-400 mt-1">
-        Created by: <a target="_blank" href="https://github.com/parinzee" className="decoration-amber-600">Parinthapat Pengpun</a>
+        Created by:{" "}
+        <a
+          target="_blank"
+          href="https://github.com/parinzee"
+          className="decoration-amber-600"
+        >
+          Parinthapat Pengpun
+        </a>
       </h2>
       <p className="text-lg md:text-xl dark:text-white text-black mt-5">
         This is an <b>mT5-small</b> model that has been finetuned to{" "}
@@ -33,7 +41,11 @@ function Info() {
         >
           GitHub
         </a>
-        , <a target="_blank" className="decoration-indigo-500">Medium Blog</a>.
+        ,{" "}
+        <a target="_blank" className="decoration-indigo-500">
+          Medium Blog
+        </a>
+        .
       </p>
       <hr className="mt-5" />
       <h2 className="text-2xl md:text-3xl text-black dark:text-white font-bold mt-1">
@@ -64,6 +76,13 @@ function Info() {
       </ul>
       <hr className="mt-5" />
       <h2 className="text-2xl md:text-3xl text-black dark:text-white font-bold mt-1">
+        Formatting
+      </h2>
+      <div className="text-lg md:text-xl dark:text-white text-black mt-5 font-mono p-2 bg-neutral-300 dark:bg-neutral-700 rounded-md max-w-max">
+        สร้าง <i className="text-green-600 dark:text-lime-300 font-extrabold">จำนวน</i> คำถาม: <i className="text-green-600 dark:text-lime-300 font-extrabold">ข้อมูล</i>
+      </div>
+      <hr className="mt-5" />
+      <h2 className="text-2xl md:text-3xl text-black dark:text-white font-bold mt-1">
         Metrics
       </h2>
       <div className="mt-2 overflow-auto">
@@ -73,7 +92,7 @@ function Info() {
               <th>Model</th>
               <th>Meteor</th>
               <th>GLEU</th>
-              <th>BLEU</th>
+              <th>BLEU-4</th>
               <th>CHRF</th>
               <th>ROUGE-L</th>
             </tr>

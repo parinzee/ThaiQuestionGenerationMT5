@@ -27,29 +27,29 @@ function ModelInput({ register, loading, data }) {
         for="models"
         class="mt-3 block mb-2 text-lg font-medium text-gray-900 dark:text-gray-400"
       >
-        Select a Model:
+        Select a Variant:
       </label>
       <select
         id="models"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         {...register("model")}
       >
-        <option value="number_separated" selected>
-          numsep (recommended)
+        <option value="default" selected>Default</option>
+        <option value="number_separated">
+          numsep 
         </option>
-        <option value="default">Default</option>
       </select>
       <label
         for="model_input"
         class="mt-3 block mb-2 text-lg font-medium text-gray-900 dark:text-gray-400"
       >
-        Model Input:
+        Text Input:
       </label>
       <textarea
         id="model_input"
-        className="block h-52 p-2.5 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className="block h-60 p-2.5 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         {...register("input_text")}
-        placeholder="สร้าง 3 คำถาม..."
+        placeholder="สร้าง 3 คำถาม: "
       >
         สร้าง 2 คำถาม: เฟซบุ๊ก (อังกฤษ: Facebook)
         เป็นบริการเครือข่ายสังคมสัญชาติอเมริกัน สำนักงานใหญ่อยู่ที่ เมนโลพาร์ก
