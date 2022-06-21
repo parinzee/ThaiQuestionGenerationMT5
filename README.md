@@ -32,7 +32,7 @@ These datasets are **question generation datasets** but are adapted for **questi
 
 ## More Details
 - **Data Augmentation, Cleaning, Collection:** [aug-numsep.ipynb](https://github.com/parinzee/ThaiQuestionGenerationMT5/blob/main/model/training-evaluation/aug-numsep.ipynb)
-- **Error Analysis:** [Analysis.ipynb](https://github.com/parinzee/ThaiQuestionGenerationMT5/blob/main/model/Analysis.ipynb)
+- **Error Analysis + Exploratory Data Analysis:** [Analysis.ipynb](https://github.com/parinzee/ThaiQuestionGenerationMT5/blob/main/model/Analysis.ipynb)
 - **Other details**: [Medium Blog]()
 
 ## Model Variants (Datacentric)
