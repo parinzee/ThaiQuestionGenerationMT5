@@ -66,10 +66,6 @@ function Info() {
           augmented (modified for better functionality)
         </li>
         <li>
-          <span className="font-mono">sep:</span> Generate questions with
-          &quot;&lt;sep&gt;&quot; instead of &quot;1.&quot; for separation
-        </li>
-        <li>
           <span className="font-mono">numsep:</span> Generate questions with
           &quot;&lt;1&gt;&quot; instead of &quot;1.&quot; for separation
         </li>
