@@ -12,7 +12,13 @@ body {
 }
 
 a {
-  @apply text-sky-200 underline decoration-solid
+  @apply text-sky-400 underline decoration-solid font-semibold
+}
+
+@media (prefers-color-scheme: dark) {
+a {
+  @apply text-sky-200 underline decoration-solid font-semibold
+}
 }
 
 
