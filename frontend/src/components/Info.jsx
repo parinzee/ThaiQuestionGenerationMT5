@@ -42,7 +42,7 @@ function Info() {
           GitHub
         </a>
         ,{" "}
-        <a target="_blank" className="decoration-indigo-500">
+        <a target="_blank" href="https://medium.com/@parinzee/studying-let-an-ai-generate-q-as-to-quiz-you-9ef27b1554d" className="decoration-indigo-500">
           Medium Blog
         </a>
         .
