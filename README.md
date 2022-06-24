@@ -50,3 +50,4 @@ And these are our beautiful results
 | Baseline | 0.46   | 0.20 | 0.16   | 0.32 | 0.57    |
 | Default  | 0.56   | 0.34 | 0.31   | 0.46 | 0.86    |
 | numsep      | 0.59   | 0.36 | 0.34   | 0.46 | 0.81    |
+| aug-numsep  | 0.60   | 0.37	| 0.36	  | 0.47	| 0.84    |
