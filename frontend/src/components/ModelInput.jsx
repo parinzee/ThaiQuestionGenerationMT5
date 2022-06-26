@@ -34,7 +34,7 @@ function ModelInput({ register, loading, data }) {
         class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         {...register("model")}
       >
-        <option value="augmented_number_separated" selected> aug-numsep (recommended)</option>
+        <option value="augmented_number_separated" selected> aug-numsep </option>
         <option value="default">Default</option>
         <option value="number_separated">
           numsep
@@ -51,15 +51,17 @@ function ModelInput({ register, loading, data }) {
         class="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         {...register("example")}
       >
-        <option value="1" selected>Example Paragraph 1</option>
-        <option value="2">Example Paragraph 2</option>
-        <option value="3">Example Paragraph 3</option>
-        <option value="4">Example Paragraph 4</option>
-        <option value="5">Example Paragraph 5</option>
-        <option value="6">Example Paragraph 6</option>
-        <option value="7">Example Paragraph 7</option>
-        <option value="8">Example Paragraph 8</option>
-        <option value="9">Example Paragraph 9</option>
+        <option value="1" selected>Example Paragraph 1 - เฟซบุ๊ก</option>
+        <option value="2">Example Paragraph 2 - ชาวโยดะยา</option>
+        <option value="3">Example Paragraph 3 - สถาบันวิทยสิริเมธี</option>
+        <option value="4">Example Paragraph 4 - สำนักงานส่งเสริมเศรษฐกิจดิจิทัล (depa)</option>
+        <option value="5">Example Paragraph 5 - VISAI</option>
+        <option value="6">Example Paragraph 6 - กลุ่มเซ็นทรัล</option>
+        <option value="7">Example Paragraph 7 - Amazon Web Services</option>
+        <option value="8">Example Paragraph 8 - กรุงศรี</option>
+        <option value="9">Example Paragraph 9 - เอไอเอ</option>
+        <option value="10">Example Paragraph 10 - Dell Inc</option>
+        <option value="11">Example Paragraph 11 - ธนาคารกสิกรไทย</option>
       </select>
       <label
         for="model_input"
@@ -72,24 +74,7 @@ function ModelInput({ register, loading, data }) {
         className="block h-60 p-2.5 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         {...register("input_text")}
         placeholder="สร้าง 3 คำถาม: "
-        defaultValue={`
-        สร้าง 2 คำถาม: เฟซบุ๊ก (อังกฤษ: Facebook)
-        เป็นบริการเครือข่ายสังคมสัญชาติอเมริกัน สำนักงานใหญ่อยู่ที่ เมนโลพาร์ก
-        รัฐแคลิฟอร์เนีย เฟซบุ๊กก่อตั้งเมื่อวันพุธที่ 4 กุมภาพันธ์ ค.ศ. 2004
-        โดยมาร์ก ซักเคอร์เบิร์ก และเพื่อนร่วมห้องภายในมหาวิทยาลัย
-        และเหล่าเพื่อนในมหาวิทยาลัยฮาร์วาร์ด พร้อมโดยสมาชิกเพื่อนผู้ก่อตั้ง
-        Eduardo Saverin, Andrew McCollum, Dustin Moskovitz และ Chris Hughes
-        ในท้ายที่สุดเว็บไซต์มีการเข้าชมอย่างจำกัด
-        ทำให้เหล่านักศึกษาภายในมหาวิทยาลัยฮาร์วาร์ด
-        แต่ภายหลังได้ขยายเพิ่มจำนวนในมหาวิทยาลัย ในพื้นที่บอสตัน ไอวีลีก
-        และมหาวิทยาลัยสแตนฟอร์ด และค่อย ๆ รับรองมหาวิทยาลัยอื่นต่าง ๆ
-        และต่อมาก็รับรองโรงเรียนมัธยมศึกษา
-        โดยเฟซบุ๊กให้การอนุญาตให้เยาวชนอายุต่ำกว่า 13
-        ปีทั่วโลกสามารถสมัครสมาชิกได้ภายในเว็บไซต์ โดยไม่ต้องอ้างอิงหลักฐานใด ๆ
-        ใน ค.ศ. 2020 เฟซบุ๊กอ้างว่ามีผู้ใช้ที่ยังคงใช้งานรายเดือนที่ 2.8
-        พันล้านคน โดยมีผู้ใช้งานทั่วโลกมากเป็นอันดับ 7
-        และเป็นแอปโทรศัพท์ที่มีคนโหลดมากที่สุดในคริสต์ทศวรรษ 2010
-        `}
+        defaultValue="สร้าง 5 คำถาม: เฟซบุ๊ก (อังกฤษ: Facebook) เป็นบริการเครือข่ายสังคมสัญชาติอเมริกัน สำนักงานใหญ่อยู่ที่ เมนโลพาร์ก รัฐแคลิฟอร์เนีย เฟซบุ๊กก่อตั้งเมื่อวันพุธที่ 4 กุมภาพันธ์ ค.ศ. 2004 โดยมาร์ก ซักเคอร์เบิร์ก และเพื่อนร่วมห้องภายในมหาวิทยาลัย และเหล่าเพื่อนในมหาวิทยาลัยฮาร์วาร์ด พร้อมโดยสมาชิกเพื่อนผู้ก่อตั้ง Eduardo Saverin, Andrew McCollum, Dustin Moskovitz และ Chris Hughes ในท้ายที่สุดเว็บไซต์มีการเข้าชมอย่างจำกัด ทำให้เหล่านักศึกษาภายในมหาวิทยาลัยฮาร์วาร์ด แต่ภายหลังได้ขยายเพิ่มจำนวนในมหาวิทยาลัย ในพื้นที่บอสตัน ไอวีลีก และมหาวิทยาลัยสแตนฟอร์ด และค่อย ๆ รับรองมหาวิทยาลัยอื่นต่าง ๆ และต่อมาก็รับรองโรงเรียนมัธยมศึกษา โดยเฟซบุ๊กให้การอนุญาตให้เยาวชนอายุต่ำกว่า 13 ปีทั่วโลกสามารถสมัครสมาชิกได้ภายในเว็บไซต์ โดยไม่ต้องอ้างอิงหลักฐานใด ๆ ใน ค.ศ. 2020 เฟซบุ๊กอ้างว่ามีผู้ใช้ที่ยังคงใช้งานรายเดือนที่ 2.9 พันล้านคน โดยมีผู้ใช้งานทั่วโลกมากเป็นอันดับ 7 และเป็นแอปโทรศัพท์ที่มีคนโหลดมากที่สุดในคริสต์ทศวรรษ 2010"
       >
       </textarea>
       <button
