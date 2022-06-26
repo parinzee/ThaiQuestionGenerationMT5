@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Settings from "./Settings";
 import ModelInput from "./ModelInput";
 
 function Inference() {
-  const { register, handleSubmit } = useForm();
+  const { register, watch, handleSubmit, setValue } = useForm();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState("");
 
@@ -28,6 +28,22 @@ function Inference() {
         setLoading(false);
       });
   };
+
+  useEffect(() => {
+    const subscription = watch((value, { name, type }) => {
+      if (name === "model" && type === "change") {
+        if (value.model === "default" || value.model === "number_separated") {
+          setValue("num_beams", 3)
+          setValue("repetition_penalty", 2.75)
+        } else if (value.model === "augmented_number_separated") {
+          setValue("num_beams", 4)
+          setValue("repetition_penalty", 3.1)
+        }
+      }
+    });
+    return () => subscription.unsubscribe();
+
+  }, [watch])
 
   return (
     <form
