@@ -1,4 +1,5 @@
 # Automatic Thai Question Generation with MT5  🤗
+[![Demo Video](https://i.imgur.com/3xvnMrN.png)](https://www.youtube.com/watch?v=IdP4wmPOL1g)
 Folder structure:
 * `model`: Notebook + training scripts
   * `Analysis.ipynb`: Error Analysis + Exploratory Data Analysis
